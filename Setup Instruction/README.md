@@ -2,27 +2,25 @@
 
 There are two ways to set up the OpenInfer backend for Claw.
 
-## Option 1: Start with a fresh OpenClaw config
+## Option 1: Replace your OpenClaw config
 
 If you are new to OpenClaw, the easiest way is to download the config file below and replace your existing config:
 
 [Download the config file](https://drive.google.com/file/d/12_kVKs_SVnZ-saE36RNLA9QTjwy1Ge6E/view?usp=drive_link)
 
-Place the downloaded file in `~/.openclaw`.
+Place the downloaded config in `~/.openclaw`.
 
 > [!WARNING]
 > This will replace your existing OpenClaw config.
-> Back up your current config files first if you want to keep them.
+> Be sure to back up your current config files before replacing them.
 
----
+## Option 2: Add OpenInfer to your existing OpenClaw config
 
-## Option 2: Add OpenInfer to an existing OpenClaw config
-
-If you are already using OpenClaw and do **not** want to reset your config, follow these steps.
+If you are already using OpenClaw and do not want to reset your config, follow these steps.
 
 ### 1. Add a new provider
 
-Add a new entry under `models.providers` such as `models.providers.openinfer` with the following configuration:
+Add a new provider under `models.providers`, for example `models.providers.openinfer`, with the following configuration:
 
 ```json
 {
@@ -48,3 +46,22 @@ Add a new entry under `models.providers` such as `models.providers.openinfer` wi
     }
   ]
 }
+```
+
+### 2. Set the default model
+
+Set `agents.defaults.model.primary` to:
+
+```text
+providername/@url/https://openinfer-memento-demo.s3.us-west-1.amazonaws.com/models/openinfer.gguf
+```
+
+Example:
+
+```text
+openinfer/@url/https://openinfer-memento-demo.s3.us-west-1.amazonaws.com/models/openinfer.gguf
+```
+
+## You're all set
+
+After saving these changes, OpenClaw should be ready to use with the OpenInfer backend.
