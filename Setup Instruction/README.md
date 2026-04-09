@@ -16,7 +16,7 @@ Place the downloaded config in `~/.openclaw`.
 
 ## Option 2: Add OpenInfer to your existing OpenClaw config
 
-If you are already using OpenClaw and do not want to reset your config, follow these steps.
+If you are already using OpenClaw and do not want to reset your config, open the config in ~/.openclaw/openclaw.json and follow these steps.
 
 ### 1. Add a new provider
 
