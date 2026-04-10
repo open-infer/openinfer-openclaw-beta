@@ -1,4 +1,19 @@
-# Welcome to the OpenInfer Claw Backend
+# Welcome to the OpenInfer Beta Powering Claw Backend
+Agentic AI has an infrastructure problem. 90% of agent workloads are background tasks — latency-tolerant, routine, and always-on — yet they're being served on premium compute stacks built for real-time sessions. That mismatch is expensive and unnecessary.
+
+OpenInfer fixes this.
+
+Powered by Weave, our inference orchestration engine, OpenInfer routes each workload based on its SLA and workload characteristics to the right compute topology automatically. The result: major compute dependency unlock and real cost control at scale.
+
+**OpenClaw** is the first application built on OpenInfer Beta. Run it free across our partner cloud ecosystem, starting with AWS.
+
+## Get Started
+
+Free production trial available at [openinfer.io/beta](https://openinfer.io/beta)
+> OpenInfer Beta is under active development. APIs and interfaces are subject to change.
+
+
+
 
 There are two ways to set up the OpenInfer backend for Claw.
 
