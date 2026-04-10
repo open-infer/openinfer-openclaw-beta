@@ -1,129 +1,67 @@
-# OpenInfer - Run AI Anywhere
+# Welcome to the OpenInfer Claw Backend
 
-> Edge, on-prem, or cloud — Any hardware — No compromises
+There are two ways to set up the OpenInfer backend for Claw.
 
-*"You have the compute. It's already out there, OpenInfer makes it think together"*
+## Option 1: Replace your OpenClaw config
 
-**[Details](#meet-openinfer)** | **[Try OpenInfer Beta](https://openinfer.io/beta)**
+If you are new to OpenClaw, the easiest way is to download the config file below and replace your existing config:
 
----
+[Download the config file](https://drive.google.com/file/d/12_kVKs_SVnZ-saE36RNLA9QTjwy1Ge6E/view?usp=drive_link)
 
-End-to-end enterprise inference structure connecting distributed, heterogeneous edge compute (CPUs, GPUs, NPUs) into one coordinated AI system.
+Place the downloaded config in `~/.openclaw`.
 
----
+> [!WARNING]
+> This will replace your existing OpenClaw config.
+> Be sure to back up your current config files before replacing them.
 
-## What if AI was:
+## Option 2: Add OpenInfer to your existing OpenClaw config
 
-- **Low Cost** — Maximize ROI
-- **Sovereign** — Your control
-- **Reliable** — Always-on
+If you are already using OpenClaw and do not want to reset your config, open the config in ~/.openclaw/openclaw.json and follow these steps.
 
-> *"AI must run where data lives — on Edge"*
+### 1. Add a new provider
 
-## What if Edge could be:
+Add a new provider under `models.providers`, for example `models.providers.openinfer`, with the following configuration:
 
-- Hardware Agnostic
-- Easy To Deploy
-- Resource Unbound
+```json
+{
+  "baseUrl": "http://api.openinfer.io/openai/v1",
+  "apiKey": "9b8f3d7c1a6e4f20b5c9a1d8e7f34c62",
+  "api": "openai-responses",
+  "models": [
+    {
+      "id": "@url/https://openinfer-memento-demo.s3.us-west-1.amazonaws.com/models/openinfer.gguf",
+      "name": "@url/https://openinfer-memento-demo.s3.us-west-1.amazonaws.com/models/openinfer.gguf",
+      "reasoning": false,
+      "input": [
+        "text"
+      ],
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0
+      },
+      "contextWindow": 128000,
+      "maxTokens": 16384
+    }
+  ]
+}
+```
 
----
+### 2. Set the default model
 
-## Meet OpenInfer
+Set `agents.defaults.model.primary` to:
 
-Full-stack enterprise inference infrastructure transforming distributed edge compute into coordinated AI — without relocating data, modifying models, or replacing hardware.
+```text
+providername/@url/https://openinfer-memento-demo.s3.us-west-1.amazonaws.com/models/openinfer.gguf
+```
 
-### Key Capabilities
+Example:
 
-**Distributed Inference for Heterogeneous Compute**
-Custom distributed inference enables fragmented heterogeneous nodes (NPUs, CPUs, GPUs) to mesh for large model inference in previously incompatible environments.
+```text
+openinfer/@url/https://openinfer-memento-demo.s3.us-west-1.amazonaws.com/models/openinfer.gguf
+```
 
-**Built with Deployment in Mind**
-Simple deployment with enterprise-grade maintainability removes adoption barriers.
+## You're all set
 
-**Always On Collaborative AI**
-Real AI collaboration functions as infrastructure, keeping agents, operations, and systems synchronized with mission-critical resilience and security.
-
-**Data Center-Like Inference Where Data Lives**
-Data remains stationary, sovereignty maintained, costs reduced, model accuracy preserved — a paradigm shift toward localized AI processing.
-
----
-
-## Performance: Proven at the Edge
-
-Real benchmarks on commodity hardware already in infrastructure.
-
-| Scenario | Setup | OpenInfer | Competitor | Result |
-|---|---|---|---|---|
-| **Memory Unlock** — Reliable Inference on Constrained Systems | 4× AWS Intel Xeon VMs, 8GB RAM each, ~700µs latency | **4.49 tok/s** | Llamacpp | **200× Faster** |
-| **Large Model at Edge** — Cost Unlock | 4× AWS Intel Xeon VMs, 32GB RAM each, ~700µs latency | **1.3 tok/s** | Llamacpp — Failed | **Cost Unlock** |
-| **Mixed Topology** — Scalability Across PCs | 2 PCs (one w/ 2 GPUs, one w/ 1 GPU, over Ethernet) | **~10 tok/s** | vLLM — Failed | **Mixed Topology Unlock** |
-
-[Learn more](https://openinfer.io/performance-proven-at-the-edge/)
-
----
-
-## Who We Are
-
-**Mission:** *"Bring AI to every physical surface, where the data lives"*
-
-| | |
-|---|---|
-| **5** | Silicon Architectures, One Runtime |
-| **60%** | Unlocking of Idle Enterprise CPU |
-
-Distributed systems veterans who designed and shipped enterprise-scale infrastructure at **Meta, Google, IBM, and Apple**.
-
-Focused on large language models expanding to vision and world models across CPUs, GPUs, NPUs, and custom silicon — unlocking unused compute for dramatically lower-cost inference across private data centers and on-premise infrastructure.
-
----
-
-## Who It's For
-
-### Sovereign AI & Tactical Edge — *"Disconnected Autonomy"*
-High-reasoning inference in air-gapped zones where cloud connectivity is a liability.
-
-**Target:** Defense and Primes, National Security, Intelligence, Emergency Response, Tactical Command Centers
-
-### Industrial Edge & Remote Infrastructure — *"The IT/OT Intelligence Bridge"*
-Harvest unused compute from remote sensors and factory-floor servers for real-time local agents without bandwidth lag.
-
-**Target:** Oil & Gas, Mining, Smart Manufacturing, Logistics, Smart Warehousing
-
-### Secure Enterprise & Local Workspace — *"The Private Agentic Mesh"*
-Eliminate cloud "Agentic Tax" and data-leak risks by running 70B+ models on existing AI PCs and idle office workstations.
-
-**Target:** SMBs, Financial Services, Healthcare, Legal, Distributed Remote Teams
-
----
-
-## OpenInfer Whitepaper
-
-Access the Runtime Infrastructure Architecture Whitepaper covering edge inference redefinition.
-
-[Learn More](https://docsend.com/view/s/753jex8mg88dchkh)
-
----
-
-## Solutions
-
-- **[Studio](https://studio.openinfer.io)** — Serverless inference platform
-- **[AskJean.ai](https://openinfer.io/askjean/)** — Collaborative AI by email
-
-## Demos
-
-- **[Mementos Web App Demo](https://studio.openinfer.io/mementos)** — Private AI memory you control
-- **[Physical AI Perception Fusion Demo](https://fusion-demo.openinfer.ai/)** — Distributed reasoning across devices
-
----
-
-## About This Repo
-
-**openinfer-openclaw-beta** — OpenInfer + OpenClaw Integration: Run your OpenClaw workflows with smarter, task-aware inference.
-
----
-
-**[openinfer.io](https://openinfer.io)** · [About](https://openinfer.io/about-us/) · [News](https://openinfer.io/news/) · [Careers](https://openinfer.io/jobs/)
-
-1810 Gateway Dr, San Mateo, CA 94404 · [email protected]
-
-© 2026 OpenInfer. All rights reserved.
+After saving these changes, OpenClaw should be ready to use with the OpenInfer backend.
