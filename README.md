@@ -39,27 +39,24 @@ Add a new provider under `models.providers`, for example `models.providers.openi
 
 ```json
 {
-  "baseUrl": "http://api.openinfer.io/openai/v1",
+  "baseUrl": "https://api.openinfer.io/openai/v1",
   "apiKey": "9b8f3d7c1a6e4f20b5c9a1d8e7f34c62",
-  "api": "openai-responses",
+  "api": "openai-completions",
   "models": [
     {
-      "id": "@url/https://openinfer-memento-demo.s3.us-west-1.amazonaws.com/models/openinfer.gguf",
-      "name": "@url/https://openinfer-memento-demo.s3.us-west-1.amazonaws.com/models/openinfer.gguf",
+      "id": "openinfer/beta",
+      "name": "openinfer/beta",
       "reasoning": false,
       "input": [
         "text"
       ],
-      "cost": {
-        "input": 0,
-        "output": 0,
-        "cacheRead": 0,
-        "cacheWrite": 0
-      },
       "contextWindow": 128000,
       "maxTokens": 16384
     }
-  ]
+  ],
+  "headers": {
+    "X-Session-ID": "openclaw-responses-2"
+  }
 }
 ```
 
@@ -68,13 +65,13 @@ Add a new provider under `models.providers`, for example `models.providers.openi
 Set `agents.defaults.model.primary` to:
 
 ```text
-providername/@url/https://openinfer-memento-demo.s3.us-west-1.amazonaws.com/models/openinfer.gguf
+providername/local/openinfer/beta
 ```
 
 Example:
 
 ```text
-openinfer/@url/https://openinfer-memento-demo.s3.us-west-1.amazonaws.com/models/openinfer.gguf
+openinfer/local/openinfer/beta
 ```
 
 ## You're all set
