@@ -41,11 +41,11 @@ Add a new provider under `models.providers`, for example `models.providers.openi
 {
   "baseUrl": "https://api.openinfer.io/openai/v1",
   "apiKey": "9b8f3d7c1a6e4f20b5c9a1d8e7f34c62",
-  "api": "openai-completions",
+  "api": "openai-responses",
   "models": [
     {
-      "id": "openinfer/beta",
-      "name": "openinfer/beta",
+      "id": "@oi/beta",
+      "name": "@oi/beta",
       "reasoning": false,
       "input": [
         "text"
@@ -65,13 +65,13 @@ Add a new provider under `models.providers`, for example `models.providers.openi
 Set `agents.defaults.model.primary` to:
 
 ```text
-providername/local/openinfer/beta
+providername/@oi/beta
 ```
 
 Example:
 
 ```text
-openinfer/local/openinfer/beta
+openinfer/@oi/beta
 ```
 
 ## You're all set
