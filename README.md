@@ -39,7 +39,7 @@ Add a new provider under `models.providers`, for example `models.providers.openi
 
 ```json
 {
-  "baseUrl": "https://api.openinfer.io/openai/v1",
+  "baseUrl": "http://api.openinfer.io:9080/openai/v1",
   "apiKey": "9b8f3d7c1a6e4f20b5c9a1d8e7f34c62",
   "api": "openai-responses",
   "models": [
