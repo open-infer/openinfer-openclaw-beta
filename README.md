@@ -49,9 +49,7 @@ Add a new provider under `models.providers`, for example `models.providers.openi
       "reasoning": false,
       "input": [
         "text"
-      ],
-      "contextWindow": 128000,
-      "maxTokens": 16384
+      ]
     }
   ],
   "headers": {
